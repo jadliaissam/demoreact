@@ -1,61 +1,57 @@
-import React from 'react';
-import SignIn from './SignIn';
+import React, { useState, useCallback, useContext } from 'react';
+import Login from './Login';
+import Signup from './Signup';
 import Configuration from './Configuration'
 import Dashboard from './Dashboard'
-import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom';
+import Home from './Home'
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import Profile from './Profile'
 
-export const GeneralContext = React.createContext()
 
-class App extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      isLoggedIn: false,
-      tokena : null,
-      tokenr : null
-    }
-  }
+export const GeneralContext = React.createContext({})
 
-  render() {
-    return (
-      <BrowserRouter>
-        <GeneralContext.Provider value={this.state}>
+const initialState = { user: null, server: null, theme: 'light' }
+
+function Root(){
+  const [config, setConfig] = useState(initialState)
+  return (
+    <GeneralContext.Provider value={{ config, updateContext: (data) => setConfig({ ...config, ...data }) }}>
+      <App />
+    </GeneralContext.Provider>
+  )
+}
+
+export default Root;
+
+function App() {
+  const serverAdd = localStorage.getItem('server')
+  //const [server, setServer] = useState(serverAdd !== null ? serverAdd : '')
+  //const [theme, setTheme] = useState('light')
+  const {config, updateContext} = useContext(GeneralContext)
+
+//return <Profile user={{name : 'Alex'}} /> }
+
+  return (
+    <div>
+        <BrowserRouter context={config}>
           <Switch>
-            <Route exact path="/dashboard">
-              {this.state.isLoggedIn ? < Dashboard /> : <Redirect to={{ pathname: "/login" }} />}
+            <Route path={ '/login'}>
+              <Login />
             </Route>
             <Route exact path="/config">
               <Configuration />
             </Route>
-            <Route path="/login">
-              {this.state.isLoggedIn ? < Dashboard /> : <SignIn />}
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path="/">
+              <Home />
             </Route>
           </Switch>
-        </GeneralContext.Provider>
-      </BrowserRouter>
-    )
-  }
-}
-
-function PrivateRoute({ children, isAuthenticated, ...rest }) {
-  return (
-    <Route
-      {...rest}
-      render={({ location }) =>
-        isAuthenticated ? (
-          children
-        ) : (
-            <Redirect
-              to={{
-                pathname: "/login",
-                state: { from: location }
-              }}
-            />
-          )
-      }
-    />
-  );
+        </BrowserRouter>
+    </div>
+  )
 }
 
 
-export default App;
+
