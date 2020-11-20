@@ -107,6 +107,10 @@ function App() {
         partnerVideo.current.srcObject = stream;
       }
     });
+    
+    peer.oniceconnectionstatechange = function(){
+       console.log('ICE state: ',peerConn.iceConnectionState);
+    }
 
     socket.current.on("callAccepted", signal => {
       setCallAccepted(true);
@@ -125,6 +129,11 @@ function App() {
     peer.on("signal", data => {
       socket.current.emit("acceptCall", { signal: data, to: caller })
     })
+    
+    
+    peer.oniceconnectionstatechange = function(){
+       console.log('ICE state: ',peerConn.iceConnectionState);
+    }
 
     peer.on("stream", stream => {
       partnerVideo.current.srcObject = stream;
