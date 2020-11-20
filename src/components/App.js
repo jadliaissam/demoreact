@@ -109,7 +109,7 @@ function App() {
     });
     
     peer.oniceconnectionstatechange = function(){
-       console.log('ICE state: ',peerConn.iceConnectionState);
+       console.log('ICE state: ',peer.iceConnectionState);
     }
 
     socket.current.on("callAccepted", signal => {
@@ -132,7 +132,7 @@ function App() {
     
     
     peer.oniceconnectionstatechange = function(){
-       console.log('ICE state: ',peerConn.iceConnectionState);
+       console.log('ICE state: ',peer.iceConnectionState);
     }
 
     peer.on("stream", stream => {
