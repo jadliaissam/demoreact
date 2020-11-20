@@ -35,7 +35,7 @@ function App() {
   const socket = useRef();
 
   useEffect(() => {
-    socket.current =  io.connect('/');
+    socket.current =  io.connect('https://aqueous-garden-74022.herokuapp.com/');
     navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then(stream => {
       setStream(stream);
       if (userVideo.current) {
