@@ -16,7 +16,11 @@
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "simple-peer": "9.6.2",
+    "socket.io-client": "^2.3.0",
+    "styled-components": "^5.0.1",
+     "xmlhttprequest-ssl": "1.6.0"
   },
   "scripts": {
     "start": "react-scripts start",
