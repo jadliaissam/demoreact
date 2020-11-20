@@ -62,15 +62,7 @@ function App() {
       initiator: true,
       trickle: false,
       config: {
-
-        iceServers: [
-          {url:'stun:stun.l.google.com:19302'},
-            {
-                urls: "turn:numb.viagenie.ca",
-                username: "hesokaslave@gmail.com",
-                credential: "022370133"
-            }
-        ]
+        iceServers: [{"url":"stun:global.stun.twilio.com:3478?transport=udp","urls":"stun:global.stun.twilio.com:3478?transport=udp"},{"url":"turn:global.turn.twilio.com:3478?transport=udp","username":"5ce808230b187bb8620a41d3fb040325f61d7e6bfa5a5894f3133973abe8f371","urls":"turn:global.turn.twilio.com:3478?transport=udp","credential":"9I2zhwVXXEepn1+YBULh2ICEx/ZP28TWhydlxb7Gsho="},{"url":"turn:global.turn.twilio.com:3478?transport=tcp","username":"5ce808230b187bb8620a41d3fb040325f61d7e6bfa5a5894f3133973abe8f371","urls":"turn:global.turn.twilio.com:3478?transport=tcp","credential":"9I2zhwVXXEepn1+YBULh2ICEx/ZP28TWhydlxb7Gsho="},{"url":"turn:global.turn.twilio.com:443?transport=tcp","username":"5ce808230b187bb8620a41d3fb040325f61d7e6bfa5a5894f3133973abe8f371","urls":"turn:global.turn.twilio.com:443?transport=tcp","credential":"9I2zhwVXXEepn1+YBULh2ICEx/ZP28TWhydlxb7Gsho="}]
     },
       stream: stream,
     });
@@ -103,15 +95,7 @@ function App() {
       trickle: false,
       stream: stream,
 config: {
-
-        iceServers: [
-          {url:'stun:stun.l.google.com:19302'},
-            {
-                urls: "turn:numb.viagenie.ca",
-                username: "hesokaslave@gmail.com",
-                credential: "022370133"
-            }
-        ]
+          iceServers: [{"url":"stun:global.stun.twilio.com:3478?transport=udp","urls":"stun:global.stun.twilio.com:3478?transport=udp"},{"url":"turn:global.turn.twilio.com:3478?transport=udp","username":"5ce808230b187bb8620a41d3fb040325f61d7e6bfa5a5894f3133973abe8f371","urls":"turn:global.turn.twilio.com:3478?transport=udp","credential":"9I2zhwVXXEepn1+YBULh2ICEx/ZP28TWhydlxb7Gsho="},{"url":"turn:global.turn.twilio.com:3478?transport=tcp","username":"5ce808230b187bb8620a41d3fb040325f61d7e6bfa5a5894f3133973abe8f371","urls":"turn:global.turn.twilio.com:3478?transport=tcp","credential":"9I2zhwVXXEepn1+YBULh2ICEx/ZP28TWhydlxb7Gsho="},{"url":"turn:global.turn.twilio.com:443?transport=tcp","username":"5ce808230b187bb8620a41d3fb040325f61d7e6bfa5a5894f3133973abe8f371","urls":"turn:global.turn.twilio.com:443?transport=tcp","credential":"9I2zhwVXXEepn1+YBULh2ICEx/ZP28TWhydlxb7Gsho="}]
     }
     });
     peer.on("signal", data => {
